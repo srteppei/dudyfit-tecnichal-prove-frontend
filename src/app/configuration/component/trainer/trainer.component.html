@@ -1,19 +1,33 @@
-<form class="row" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+<form class="row mb-3" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <div class="form-row col-lg-12 align-items-center">
     <div class="col-lg-3">
       <label class="sr-only" for="inlineFormInputName">Nombre</label>
-      <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre" formControlName="name">
+      <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre" formControlName="name" [value]="trainer.name">
     </div>
     <div class="col-lg-3">
       <label class="sr-only" for="inlineFormInputValoration">Valoración</label>
-      <input type="number" class="form-control" id="inlineFormInputValoration" placeholder="Valoración" formControlName="reputation" min="0" max="5">
+      <input type="number" class="form-control" id="inlineFormInputValoration" placeholder="Valoración" formControlName="reputation" min="0" max="5" [value]="trainer.reputation">
     </div>
     <div class="col-lg-3">
       <label class="sr-only" for="inlineFormInputMaxClient">Maximo número de cliente</label>
-      <input type="number" class="form-control" id="inlineFormInputMaxClient" placeholder="Maximo número de clientes" formControlName="availablePlaces" min="1">
+      <input type="number" class="form-control" id="inlineFormInputMaxClient" placeholder="Maximo número de clientes" formControlName="availablePlaces" min="1" [value]="trainer.availablePlaces">
     </div>
-    <div class="col-lg-3">
-      <button type="submit" class="btn btn-primary btn-block" [disabled]="!formGroup.valid">Crear</button>
+    <div class="col-lg-2">
+      <button *ngIf="!trainer.id" type="submit" class="btn btn-primary btn-block" [disabled]="!formGroup.valid">Crear</button>
+      <button *ngIf="trainer.id" type="submit" class="btn btn-primary btn-block" [disabled]="!formGroup.valid">Actualizar</button>
+    </div>
+    <div class="col-lg-1">
+      <button class="btn btn-warning btn-block" [disabled]="!trainer.id" (click)="cleanTrainer()">Limpiar</button>
     </div>
   </div>
 </form>
+<article class="row">
+  <ul class="list-group col-lg-12">
+    <li *ngFor="let trainer of trainerList" class="list-group-item mb-2" (click)="selecTrainer(trainer)">
+      <span>Nombre:</span> {{trainer.name}} 
+      <span>Valoración:</span> {{trainer.reputation}} 
+      <span>Maximo número de clientes:</span> {{trainer.availablePlaces}}
+      <button class="btn btn-danger" [disabled]="!trainer.id" (click)="deleteTrainer(trainer)">Eliminar</button>
+    </li>
+  </ul>
+</article>
