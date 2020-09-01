@@ -13,7 +13,7 @@ export class ClientAssignationService {
   constructor(private httpClient: HttpClient) { }
 
   getClientAssignationList() {
-    return this.httpClient.get<ClientAssignation>(this.getUrl());
+    return this.httpClient.get<ClientAssignation[]>(this.getUrl());
   }
 
   private getUrl() {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientAssignation } from 'src/app/dudy-fit-api/domain/client-assignation';
+import { ClientAssignationService } from 'src/app/dudy-fit-api/service/client-assignation.service';
 
 @Component({
   selector: 'app-assignation',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignationComponent implements OnInit {
 
-  constructor() { }
+  public clientAssignationList: ClientAssignation[] = [];
+
+  constructor(private clientAssignationService: ClientAssignationService) { }
 
   ngOnInit(): void {
+    this.clientAssignationService.getClientAssignationList().subscribe(
+      clientAssignationList => this.clientAssignationList = clientAssignationList,
+    )
   }
 
 }
