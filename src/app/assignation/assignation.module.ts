@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AssignationComponent } from './component/assignation/assignation.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AssignationComponent],
   imports: [
     CommonModule
   ]
