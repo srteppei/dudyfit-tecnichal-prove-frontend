@@ -4,6 +4,7 @@ import { TrainerComponent } from './component/trainer/trainer.component';
 import { ClientComponent } from './component/client/client.component';
 import { LayoutComponent } from './component/layout/layout.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
   ],
   exports: [RouterModule]
 })

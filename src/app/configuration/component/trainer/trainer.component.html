@@ -1,1 +1,19 @@
-<p>trainer works!</p>
+<form class="row" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-row col-lg-12 align-items-center">
+      <div class="col-lg-3">
+        <label class="sr-only" for="inlineFormInputName">Nombre</label>
+        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre" formControlName="name">
+      </div>
+      <div class="col-lg-3">
+        <label class="sr-only" for="inlineFormInputValoration">Valoración</label>
+        <input type="number" class="form-control" id="inlineFormInputValoration" placeholder="Valoración" formControlName="reputation" min="0" max="5">
+      </div>
+      <div class="col-lg-3">
+        <label class="sr-only" for="inlineFormInputMaxClient">Maximo número de cliente</label>
+        <input type="number" class="form-control" id="inlineFormInputMaxClient" placeholder="Maximo número de clientes" formControlName="availablePlaces" min="1">
+      </div>
+      <div class="col-lg-3">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!formGroup.valid">Crear</button>
+      </div>
+    </div>
+  </form>

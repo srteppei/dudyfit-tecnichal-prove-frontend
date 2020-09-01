@@ -7,11 +7,10 @@ import { TrainerService } from './service/trainer.service';
 
 
 @NgModule({
-  declarations: [TrainerService],
+  providers: [TrainerService],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  exports: [TrainerService]
 })
 export class DudyFitApiModule { }
