@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DudyFitApiModule } from './dudy-fit-api/dudy-fit-api.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AssignationModule } from './assignation/assignation.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     ConfigurationModule,
     DudyFitApiModule,
+    AssignationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
