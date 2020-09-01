@@ -1,1 +1,28 @@
-<p>client works!</p>
+<form class="row mb-3" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-row col-lg-12 align-items-center">
+      <div class="col-lg-5">
+        <label class="sr-only" for="inlineFormInputName">Nombre</label>
+        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre" formControlName="name" [value]="client.name">
+      </div>
+      <div class="col-lg-4">
+        <label class="sr-only" for="inlineFormInputValoration">Reputación entrenador</label>
+        <input type="number" class="form-control" id="inlineFormInputValoration" placeholder="Reputación entrenador" formControlName="trainerReputation" min="0" max="10" [value]="client.trainerReputation">
+      </div>
+      <div class="col-lg-2">
+        <button *ngIf="!client.id" type="submit" class="btn btn-primary btn-block" [disabled]="!formGroup.valid">Crear</button>
+        <button *ngIf="client.id" type="submit" class="btn btn-primary btn-block" [disabled]="!formGroup.valid">Actualizar</button>
+      </div>
+      <div class="col-lg-1">
+        <button class="btn btn-warning btn-block" [disabled]="!client.id" (click)="cleanClient()">Limpiar</button>
+      </div>
+    </div>
+  </form>
+  <article class="row">
+    <ul class="list-group col-lg-12">
+      <li *ngFor="let client of clientList" class="list-group-item mb-2" (click)="selecClient(client)">
+        <span>Nombre:</span> {{client.name}} 
+        <span>Reputación entrenador:</span> {{client.trainerReputation}} 
+        <button class="btn btn-danger" [disabled]="!client.id" (click)="deleteClient(client)">Eliminar</button>
+      </li>
+    </ul>
+  </article>
